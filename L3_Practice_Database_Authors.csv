@@ -1,4 +1,4 @@
-﻿Author_ID,First Name,Middle Name,Last Name,Gender,Born,Country_1_ID,Country_2_ID,Job_1_ID,Job_2_ID
+﻿"Author_ID (int, a/i)","First_Name (varchar, 200)","Middle_Name (varchar, 200)","Last_Name (varchar, 200)","Gender (varchar, 50)","Born (varchar, 4)","Country_1_ID (int, 3)","Country_2_ID (int, 3)","Job_1_ID (int, 3)","Job_2_ID (int, 3)"
 1,Albert,,Einstein,M,1879,6,17,17,24
 2,Alexandre,fils,Dumas fils,M,1824,5,,4,18
 3,Alfred,,Tennyson,M,1809,16,,19,

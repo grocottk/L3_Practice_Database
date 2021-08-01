@@ -1,4 +1,4 @@
-﻿Subject_ID,Subject
+﻿"Subject_ID (inr, a/i)","Subject (varchar, 100)"
 1,abilities
 2,activism
 3,adult

@@ -1,4 +1,4 @@
-﻿Job_ID,Job
+﻿"Job_ID (int, a/i)","Job (varchar, 100)"
 1,Actor
 2,Animator
 3,Artist
