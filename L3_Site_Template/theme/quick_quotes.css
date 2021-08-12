@@ -212,3 +212,12 @@ input {
     display: inline-block;
 }
 
+/* ### Result styling, including 'tags' buttons ### */
+.results {
+    background-color: #58a50c;
+    border: solid 1px #007c72;
+    padding: 10px;
+
+    margin-right: 20px;
+    border-radius: 20px;
+}
