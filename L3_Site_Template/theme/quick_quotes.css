@@ -230,3 +230,10 @@ input {
     border: solid 1px #000;
     border-radius: 5px;
 }
+
+.about {
+    background-color: #CCC;
+    border: solid 1px #222;
+    padding: 10px;
+    border-radius: 10px;
+}
