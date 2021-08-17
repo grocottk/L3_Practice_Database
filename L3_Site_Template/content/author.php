@@ -27,12 +27,12 @@ include("get_author.php"); // Gets author name
         <?php echo $full_name ?> - About
     </h2>
     <p><b>Born:</b> <?php echo $find_rs['Born']; ?> </p>
-    <?php // Show countries...
+    <p> <?php // Show countries...
     country_job($dbconnect, $country_1, $country_2, "Country", "Countries", "Countries", "Country_ID", "Country")
-    ?> <br /> <br />
-    <?php // Show jobs...
+    ?> </p> <!-- <br /> <br /> <br /> -->
+    <p> <?php // Show jobs...
     country_job($dbconnect, $job_1, $job_2, "Job", "Jobs", "Career", "Job_ID", "Job")
-    ?>
+    ?> </p>
 </div> <!-- End of about the author div and/or segment -->
 <br />
 <?php
