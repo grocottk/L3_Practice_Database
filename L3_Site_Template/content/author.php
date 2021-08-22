@@ -6,17 +6,17 @@ if(!isset($_REQUEST['Author_ID'])) {
 
 $author_to_find = $_REQUEST['Author_ID'];
 
-$find_sql = "SELECT * FROM `Quotes`
-JOIN Author ON (`Author`.`Author_ID` = `Quotes`.`Author_ID`) WHERE `Quotes`.`Author_ID` = $author_to_find
+$find_sql = "SELECT * FROM `quotes`
+JOIN author ON (`author`.`Author_ID` = `quotes`.`Author_ID`) WHERE `quotes`.`Author_ID` = $author_to_find
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
 
-$country_1 = $find_rs['Country_1_ID'];
-$country_2 = $find_rs['Country_2_ID'];
+$country_1 = $find_rs['Country1_ID'];
+$country_2 = $find_rs['Country2_ID'];
 
-$job_1 = $find_rs['Job_1_ID'];
-$job_2 = $find_rs['Job_2_ID'];
+$job_1 = $find_rs['Career1_ID'];
+$job_2 = $find_rs['Career2_ID'];
 
 include("get_author.php"); // Gets author name
 

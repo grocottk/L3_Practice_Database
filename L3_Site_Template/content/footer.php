@@ -1,3 +1,3 @@
 <div class="box footer">
-            CC yourname 20XX
+            CC Kahlil Grocott 2021
         </div>    <!-- / footer -->
