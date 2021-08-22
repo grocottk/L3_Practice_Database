@@ -28,10 +28,10 @@ include("get_author.php"); // Gets author name
     </h2>
     <p><b>Born:</b> <?php echo $find_rs['Born']; ?> </p>
     <p> <?php // Show countries...
-    country_job($dbconnect, $country_1, $country_2, "Country", "Countries", "Countries", "Country_ID", "Country")
+    country_job($dbconnect, $country_1, $country_2, "Country", "Countries", "country", "Country_ID", "Country")
     ?> </p> <!-- <br /> <br /> <br /> -->
     <p> <?php // Show jobs...
-    country_job($dbconnect, $job_1, $job_2, "Job", "Jobs", "Career", "Job_ID", "Job")
+    country_job($dbconnect, $job_1, $job_2, "Job", "Jobs", "career", "Career_ID", "Career")
     ?> </p>
 </div> <!-- End of about the author div and/or segment -->
 <br />
