@@ -10,8 +10,25 @@ $subject_rs = mysqli_fetch_assoc($subject_query);
 
 $subject_count = mysqli_num_rows($subject_query);
 
+if ($subject_count > 0) {
+    $subject_ID = $subject_rs['Subject_ID'];
+}
+
+else
+{
+    // If this query is not entered, the below code breaks...
+    // ... Also, if the query is set to zero (0), any quote... 
+    // ... which has less than three subjects will be displayed.
+    $subject_ID = "-1";
+}
+
 $find_sql = "SELECT * FROM `quotes`
 JOIN author ON (`author`.`Author_ID` = `quotes`.`Author_ID`)
+WHERE `Last_Name` LIKE '%$quick_find%'
+OR `First_Name` LIKE '%$quick_find%'
+OR `Subject_1_ID` = $subject_ID
+OR `Subject_2_ID` = $subject_ID
+OR `Subject_3_ID` = $subject_ID
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
