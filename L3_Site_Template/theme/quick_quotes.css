@@ -237,3 +237,11 @@ input {
     padding: 10px;
     border-radius: 10px;
 }
+
+.error {
+    background-color: rgb(228, 141, 141);
+    color: #ee1111;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px #ee1111;
+}

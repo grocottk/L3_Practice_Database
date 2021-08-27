@@ -32,6 +32,9 @@ OR `Subject_3_ID` = $subject_ID
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
+$count = mysqli_num_rows($find_query);
+
+if($count > 0) {
 
 // Loop through results and display them...
 do {
@@ -53,6 +56,19 @@ do {
 
 } // End of the do command for display results
 
-while($find_rs = mysqli_fetch_assoc($find_query))
+while($find_rs = mysqli_fetch_assoc($find_query));
+    } // Ends if results exist
 
+else {
+    // If no results exist, display an error
+?>
+
+<h2>Sorry, no results to show</h2>
+    <div class="error">
+        Sorry, there are no quotes that match the search term <i><b><?php echo $quick_find ?></b></i>. Please try again.
+    </div>
+<p>&nbsp;</p>
+
+<?php
+}
 ?>
