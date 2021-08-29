@@ -240,8 +240,8 @@ input {
 
 .error {
     background-color: rgb(228, 141, 141);
-    color: #ee1111;
+    color: #af0d0d;
     border-radius: 10px;
     padding: 10px;
-    border: solid 1px #ee1111;
+    border: solid 1px #af0d0d;
 }
