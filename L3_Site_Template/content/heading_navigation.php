@@ -34,7 +34,7 @@
                     if(isset($_SESSION['admin'])) {
                     ?>
                     Add quote &nbsp; &nbsp;
-                    Log out
+                    <a href="index.php?page=../admin/logout">Log out</a>
                     <?php
                     } // End of user login checking if statement
 
