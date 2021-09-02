@@ -245,3 +245,11 @@ input {
     padding: 10px;
     border: solid 1px #af0d0d;
 }
+
+/* Form formatting */
+
+/* Makes the height of drop down menus slightly higher */
+select {
+    height: 40px;
+    padding: 5px;
+}
