@@ -29,6 +29,22 @@ $quote_error = $tag_1_error = "no-error";
 $quote_field = "form-ok";
 $tag_1_field = "tag-ok";
 
+// Executes when submit button is pressed
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Data retrieved from form
+    $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
+
+    // Checks that the data is valid
+
+    // Checks that the quote is not blank
+    if ($quote == "Please type your quote here") {
+        $has_errors = "yes";
+        $quote_error = "error-text";
+        $quote_field = "form-error";
+    }
+} // End of submit button if statement
+
 } // End of user logged in if statement
 
 else {
@@ -40,6 +56,18 @@ else {
 
 <h1>Add Quote...</h1>
 
-<form>
-
+<form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?page=../admin/add_entry"); ?>" enctype="multipart/form-data"> <!-- Paritally inspired by "[...]new_quote.php" -->
+    
+    <!-- Text area for quote -->
+    <div class="<?php echo $quote_error; ?>">
+        This field can not be blank
+    </div>
+    <textarea class="add-field <?php echo $quote_field ?>" name="quote" rows="6"><?php echo $quote; ?></textarea>
+    <br /><br />
+    
+    <!-- Button to submit -->
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+    
 </form>
