@@ -55,6 +55,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tag_1_field = "tag-error";
     }
 
+    if($has_errors != "yes") {
+        // Gets subject IDs from the get_ID function...
+        $subjectID_1 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_1);
+        $subjectID_2 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_2);
+        $subjectID_3 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_3);
+
+        // Adds entry to the database
+        $addentry_sql = "INSERT INTO `quotes` (`ID`, `Author_ID`, `Quote`, `Notes`, `Subject_1_ID`, `Subject_2_ID`, `Subject_3_ID`) VALUES (NULL, '$author_ID', '$quote', '$notes', '$subjectID_1', '$subjectID_2', '$subjectID_3');";
+        $addentry_query = mysqli_query($dbconnect, $addentry_sql);
+
+
+
+    } // End of add entry to database if statment
+
 } // End of submit button if statement
 
 } // End of user logged in if statement
