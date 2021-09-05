@@ -34,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Data retrieved from form
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
+    $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
+    $tag_1 = mysqli_real_escape_string($dbconnect, $_POST['Subject_1']);
+    $tag_2 = mysqli_real_escape_string($dbconnect, $_POST['Subject_2']);
+    $tag_3 = mysqli_real_escape_string($dbconnect, $_POST['Subject_3']);
 
     // Checks that the data is valid
 
@@ -43,6 +47,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $quote_error = "error-text";
         $quote_field = "form-error";
     }
+
+    // Checks that the first subject has been filled in
+    if ($tag_1 == "") {
+        $has_errors = "yes";
+        $tag_1_error = "error-text";
+        $tag_1_field = "tag-error";
+    }
+
 } // End of submit button if statement
 
 } // End of user logged in if statement
@@ -64,10 +76,48 @@ else {
     </div>
     <textarea class="add-field <?php echo $quote_field ?>" name="quote" rows="6"><?php echo $quote; ?></textarea>
     <br /><br />
+
+        <input class="add-field <?php echo $notes; ?>" type="text" name="notes" value="<?php echo $notes; ?>" placeholder="Notes (optional)..."/>
     
+    <br /> <br />
+
+    <div class="<?php echo $tag_1_error ?>">
+        Please enter one subject tag at minimum
+    </div>
+
+    <div class="autocomplete">
+        <input class="<?php echo $tag_1_field; ?>" id="subject1" type="text" name="Subject_1" placeholder="Subject 1 (start typing)...">
+    </div>
+
+    <br /><br />
+
+    <div class="autocomplete">
+        <input id="subject2" type="text" name="Subject_2" placeholder="Subject 2 (start typing, optional)...">
+    </div>
+
+    <br /><br />
+
+    <div class="autocomplete">
+        <input id="subject3" type="text" name="Subject_3" placeholder="Subject 3 (start typing, optional)...">
+    </div>
+
+    <br /><br />
+
     <!-- Button to submit -->
     <p>
         <input type="submit" value="Submit" />
     </p>
     
 </form>
+
+<!-- Script to allow autocomplete to function -->
+<script>
+    <?php include("autocomplete.php"); ?>
+
+    /* Arrays that contain lists */
+    var all_tags = <?php print("$all_subjects"); ?>;
+    autocomplete(document.getElementById("subject1"), all_tags);
+    autocomplete(document.getElementById("subject2"), all_tags);
+    autocomplete(document.getElementById("subject3"), all_tags);
+
+</script>
