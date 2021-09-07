@@ -65,7 +65,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $addentry_sql = "INSERT INTO `quotes` (`ID`, `Author_ID`, `Quote`, `Notes`, `Subject_1_ID`, `Subject_2_ID`, `Subject_3_ID`) VALUES (NULL, '$author_ID', '$quote', '$notes', '$subjectID_1', '$subjectID_2', '$subjectID_3');";
         $addentry_query = mysqli_query($dbconnect, $addentry_sql);
 
+        // Finds the quote ID for next page
+        $get_quote_sql = "SELECT * FROM `quotes` WHERE `Quote` = '$quote'";
+        $get_quote_query = mysqli_query($dbconnect, $get_quote_sql);
+        $get_quote_rs = mysqli_fetch_assoc($get_quote_query);
 
+        $quote_ID = $get_quote_rs['ID'];
+        $_SESSION['Quote_Success']=$quote_ID;
+
+        // Directions to success page...
+        header('Location: index.php?page=quote_success');
 
     } // End of add entry to database if statment
 
