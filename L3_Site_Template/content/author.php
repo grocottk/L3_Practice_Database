@@ -33,6 +33,18 @@ include("get_author.php"); // Gets author name
     <p> <?php // Show jobs...
     country_job($dbconnect, $job_1, $job_2, "Job", "Jobs", "career", "Career_ID", "Career")
     ?> </p>
+    <?php
+    // If the user is logged in, show edit and/or delete buttons...
+    if (isset($_SESSION['admin'])) {
+        ?>
+        <div class="edit-tools">
+            <a href="index.php?page=../admin/editauthor&ID=<?php echo $find_rs['Author_ID']; ?>" title="Edit author"><i cass="fa fa-edit fa-2x"></i></a>
+            &nbsp; &nbsp;
+            <a href="index.php?page=../admin/deleteauthor_confirm&ID=<?php echo $find_rs['Author_ID']; ?>" title="Delete author"><i class="fa fa-trash fa-2x"></i></a>
+        </div> <!-- End of author edit tools -->
+        <?php
+    }
+    ?>
 </div> <!-- End of about the author div and/or segment -->
 <br />
 <?php
