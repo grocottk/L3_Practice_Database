@@ -28,5 +28,17 @@
             } // End if subject exists statement
             unset($subject);
             } // The end of the subject loop
+
+        // If the user is logged in, show options to edit and/or delete entries...
+        if (isset($_SESSION['admin'])) {
+            ?>
+        <div class="edit-tools">
+            <!-- Add qutoe in link -->
+            <a href="index.php?page=../admin/editquote&ID=<?php echo $find_rs['ID']; ?>" title="Edit quote"><i class="fa fa-edit fa-2x"></i></a>
+            &nbsp; &nbsp;
+            <a href="index.php?page=../admin/deletequote_confirm&ID=<?php echo $find_rs['ID']; ?>" title="Delete quote"><i class="fa fa-trash fa-2x"></i></a>
+        </div> <!-- End of edit tools 'div' -->
+            <?php
+        } // Admin tools if statement
         ?>
     </p>
