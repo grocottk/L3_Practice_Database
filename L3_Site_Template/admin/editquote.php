@@ -5,8 +5,19 @@
 if (isset($_SESSION['admin'])) {
     echo "you are logged in";
 
-    $author_ID = $_SESSION['Add_Quote'];
-    echo "Author_ID: ".$author_ID;
+    // Finds ID
+    $ID = $_REQUEST['ID'];
+    echo "Quote ID".$ID;
+
+    // Gets author ID
+    $find_sql = "SELECT * FROM `quotes`
+    JOIN author ON (`author`.`Author_ID` = `quotes`.`Author_ID`) WHERE `quotes`.`ID` = $ID
+    ";
+    $find_query = mysqli_query($dbconnect, $find_sql);
+    $find_rs = mysqli_fetch_assoc($find_query);
+
+    // Finds author ID
+    $author_ID = $find_rs['Author_ID'];
 
     // Get subject and/or topic list from database
     $all_tags_sql = "SELECT * FROM `subject` ORDER BY `subject`.`Subject` ASC";
