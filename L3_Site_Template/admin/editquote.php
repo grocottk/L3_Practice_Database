@@ -18,17 +18,32 @@ if (isset($_SESSION['admin'])) {
 
     // Finds author ID
     $author_ID = $find_rs['Author_ID'];
+    $first = $find_rs['First_Name'];
+    $middle = $find_rs['Middle_Name'];
+    $last = $find_rs['Last_Name'];
+
+    $current_author = $last.", ".$first." ".$middle;
 
     // Get subject and/or topic list from database
     $all_tags_sql = "SELECT * FROM `subject` ORDER BY `subject`.`Subject` ASC";
     $all_subjects = autocomplete_list($dbconnect, $all_tags_sql, 'Subject');
 
     // Initialise form variables for quote
-    $quote = "Please type your quote here";
-    $notes = "";
-    $tag_1 = "";
-    $tag_2 = "";
-    $tag_3 = "";
+    $quote = $find_rs['Quote'];
+    $notes = $find_rs['Notes'];
+
+    // Get Subjects to populate tags...
+    $subjectID_1 = $find_rs['Subject_1_ID'];
+    $subjectID_2 = $find_rs['Subject_2_ID'];
+    $subjectID_3 = $find_rs['Subject_3_ID'];
+
+    // Find subject names from subject table...
+    $tag_1_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_1");
+    $tag_1 = $tag_1_rs['Subject'];
+    $tag_2_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_2");
+    $tag_2 = $tag_2_rs['Subject'];
+    $tag_3_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_3");
+    $tag_3 = $tag_3_rs['Subject'];
 
 // Initialise tag IDs
 $tag_1_ID = $tag_2_ID = $tag_3_ID = 0;
@@ -100,10 +115,30 @@ else {
 
 ?>
 
-<h1>Add Quote...</h1>
+<h1>Edit Quote...</h1>
 
-<form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?page=../admin/add_entry"); ?>" enctype="multipart/form-data"> <!-- Paritally inspired by "[...]new_quote.php" -->
+<form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?page=../admin/editquote&ID=$ID"); ?>" enctype="multipart/form-data"> <!-- Paritally inspired by "[...]new_quote.php" -->
     
+<b>Quote Author:</b> &nbsp;
+        <select name="author">
+            <!-- Default option is new author -->
+            <option value="<?php echo $author_ID; ?>" selected>
+                <?php echo $current_author; ?>
+            </option>
+            <?php
+            do {
+
+            ?>
+            <option value="<?php echo $author_ID; ?>">
+                <?php echo $author_full; ?>
+            </option>
+            <?php
+            } // End of author options do statement
+
+            while($all_authors_rs=mysqli_fetch_assoc($all_authors_query))
+            ?>
+        </select>
+
     <!-- Text area for quote -->
     <div class="<?php echo $quote_error; ?>">
         This field can not be blank
