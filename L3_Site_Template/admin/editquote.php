@@ -3,11 +3,9 @@
 
 // Checks that the user is logged in...
 if (isset($_SESSION['admin'])) {
-    echo "you are logged in";
 
     // Finds ID
     $ID = $_REQUEST['ID'];
-    echo "Quote ID".$ID;
 
     // Gets author ID
     $find_sql = "SELECT * FROM `quotes`
@@ -118,9 +116,7 @@ else {
 <h1>Edit Quote...</h1>
 
 <form autocomplete="off" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]."?page=../admin/editquote&ID=$ID"); ?>" enctype="multipart/form-data"> <!-- Paritally inspired by "[...]new_quote.php" -->
-    
-<b>Quote Author:</b> &nbsp;
-        <select name="author">
+        <select class="adv gender" name="author">
             <!-- Default option is new author -->
             <option value="<?php echo $author_ID; ?>" selected>
                 <?php echo $current_author; ?>
@@ -155,19 +151,19 @@ else {
     </div>
 
     <div class="autocomplete">
-        <input class="<?php echo $tag_1_field; ?>" id="subject1" type="text" name="Subject_1" placeholder="Subject 1 (start typing)...">
+        <input class="<?php echo $tag_1_field; ?>" id="subject1" type="text" name="Subject_1" placeholder="Subject 1 (start typing)..." value="<?php echo $tag_1; ?>">
     </div>
 
     <br /><br />
 
     <div class="autocomplete">
-        <input id="subject2" type="text" name="Subject_2" placeholder="Subject 2 (start typing, optional)...">
+        <input id="subject2" type="text" name="Subject_2" placeholder="Subject 2 (start typing, optional)..." value="<?php echo $tag_2; ?>">
     </div>
 
     <br /><br />
 
     <div class="autocomplete">
-        <input id="subject3" type="text" name="Subject_3" placeholder="Subject 3 (start typing, optional)...">
+        <input id="subject3" type="text" name="Subject_3" placeholder="Subject 3 (start typing, optional)..." value="<?php echo $tag_3; ?>">
     </div>
 
     <br /><br />
