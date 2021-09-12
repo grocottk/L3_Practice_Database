@@ -57,6 +57,7 @@ $tag_1_field = "tag-ok";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Data retrieved from form
+    $author_ID = mysqli_real_escape_string(dbconnect, $_POST['Author_ID']);
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
     $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
     $tag_1 = mysqli_real_escape_string($dbconnect, $_POST['Subject_1']);
@@ -85,9 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $subjectID_2 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_2);
         $subjectID_3 = get_ID($dbconnect, 'subject', 'Subject_ID', 'Subject', $tag_3);
 
-        // Adds entry to the database
-        $addentry_sql = "INSERT INTO `quotes` (`ID`, `Author_ID`, `Quote`, `Notes`, `Subject_1_ID`, `Subject_2_ID`, `Subject_3_ID`) VALUES (NULL, '$author_ID', '$quote', '$notes', '$subjectID_1', '$subjectID_2', '$subjectID_3');";
-        $addentry_query = mysqli_query($dbconnect, $addentry_sql);
+        // Edits database entry
+        $editentry_sql = "UPDATE `quotes` SET `Author_ID` = '$author_ID', `Quote` = '$quote', `Notes` = '$notes', `Subject_1_ID` = '$subjectID_1', `Subject_2_ID` = '$subjectID_2', `Subject_3_ID` = '$subjectID_3' WHERE `quotes`.`ID` = $ID;";
+        $editentry_query = mysqli_query($dbconnect, $editentry_sql);
 
         // Finds the quote ID for next page
         $get_quote_sql = "SELECT * FROM `quotes` WHERE `Quote` = '$quote'";
@@ -95,10 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $get_quote_rs = mysqli_fetch_assoc($get_quote_query);
 
         $quote_ID = $get_quote_rs['ID'];
-        $_SESSION['Quote_Success']=$quote_ID;
 
-        // Directions to success page...
-        header('Location: index.php?page=quote_success');
+        // Go to success page...
+        header('Location: index.php?page=editquote_success&quote_ID='.$quote_ID);
 
     } // End of add entry to database if statment
 
@@ -122,8 +122,18 @@ else {
                 <?php echo $current_author; ?>
             </option>
             <?php
-            do {
 
+        // Get authors from database
+        $all_authors_sql = "SELECT * FROM `author` ORDER BY `Last_Name` ASC";
+        $all_authors_query = mysqli_query($dbconnect, $all_authors_sql);
+        $all_authors_rs = mysqli_fetch_assoc($all_authors_query);
+
+            do {
+            $author_ID = $all_authors_rs['Author_ID'];
+            $first = $all_authors_rs['First_Name'];
+            $middle = $all_authors_rs['Middle_Name'];
+            $last = $all_authors_rs['Last_Name'];
+            $author_full = $last.", ".$first." ".$middle;
             ?>
             <option value="<?php echo $author_ID; ?>">
                 <?php echo $author_full; ?>
