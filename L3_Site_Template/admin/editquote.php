@@ -57,7 +57,7 @@ $tag_1_field = "tag-ok";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Data retrieved from form
-    $author_ID = mysqli_real_escape_string(dbconnect, $_POST['Author_ID']);
+    // $author_ID = mysqli_real_escape_string($dbconnect, $_POST['Author_ID']);
     $quote = mysqli_real_escape_string($dbconnect, $_POST['quote']);
     $notes = mysqli_real_escape_string($dbconnect, $_POST['notes']);
     $tag_1 = mysqli_real_escape_string($dbconnect, $_POST['Subject_1']);
