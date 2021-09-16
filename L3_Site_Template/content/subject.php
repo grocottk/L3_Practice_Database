@@ -1,7 +1,9 @@
 
+<!-- Much of this file is recycled from "[...]quick_search.php" -->
+
 <?php
 
-$quick_find = mysqli_real_escape_string($dbconnect, $_POST['quick_search']);
+$subject_to_find = $_REQUEST['subjectID'];
 
 // Subject ID finding
 $subject_sql = "SELECT * FROM `subject` WHERE `Subject` LIKE '%$quick_find%'";
