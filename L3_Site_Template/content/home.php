@@ -1,14 +1,52 @@
 
-            <h2>First Page heading</h2>
+            <h2>Find a quote</h2>
             
             <p>
-                Sugar plum powder dessert bonbon powder lollipop lollipop muffin I love. Tiramisu dessert I love sugar plum apple pie marzipan chocolate bar brownie. Pudding tiramisu caramels biscuit tiramisu. I love gummies gummies pie sweet pudding I love I love. Donut halvah candy oat cake donut. Caramels wafer danish jelly-o.
+                The quick search box above can be easily used to find quotes from a specific author by typing a part of their name, while it can also be used to search for quotes on a specific subject. Other ways to find quotes include by looking through all of the database, searching through 10 random quotes, and by viewing the quotes most recently added to the database (all of these ordering options can be seen in the above navigation bar).
+            </p>
+            
+            <h2>Acknowledgenents</h2>
+
+            <p>
+                The majority of the quotes that make upp this database are available in the public domain. The data contained in this database has been primarily sourced from GK.
             </p>
             
             <p>
-                Jelly beans gingerbread jelly tootsie roll. Lemon drops bear claw I love tiramisu candy canes cake. Jelly-o apple pie powder tart I    love candy tiramisu. Topping liquorice cake sesame snaps brownie. Lemon drops jelly beans brownie danish I love fruitcake cotton candy danish. Dragée pastry halvah macaroon I love chocolate bar caramels liquorice. Halvah cupcake muffin fruitcake pastry I love bear claw I love jelly. Tart chocolate bar croissant danish jelly. Sugar plum powder cupcake muffin gingerbread I love sweet.
+                A special thanks to GK for assistance in the creation of this database.
             </p>
-            
+
             <p>
-                Biscuit jelly I love jelly-o candy canes chupa chups topping lemon drops I love. Sesame snaps macaroon lemon drops carrot cake I love. Chocolate bar gingerbread chupa chups. Dessert chocolate pastry liquorice tootsie roll lemon drops sweet macaroon liquorice. I love muffin bonbon. Cupcake apple pie chocolate cake bonbon topping. Macaroon gummi bears dragée caramels donut chocolate.
+                Further homepage formatting as follows...
             </p>
+
+            <h2>Find a Quote...</h2>
+                    
+            <p>
+                Please use the quick search option above to find quotes.  Try...
+            </p>
+
+            <ul>
+                <li>Typing part of an author's name</li>
+                <li>Typing in a subject such as 'love' or 'life'</li>
+            </ul>
+
+            <p>
+                You can also...
+            </p>
+
+            <ul>
+                <li>browse through <a href="index.php?page=showall">all the quotes</a></li>
+                <li>grab <a href="index.php?page=random">ten random quotes</a> </li>
+                <li>See quotes that have <a href="index.php?page=recent">recently been added</a> to this database.</li>
+            </ul>
+
+            <p>
+                <i>For each quote, you can click on the tags underneath it to find related quotes.  If you click on the author's name, all the quotes by that author will be displayed.</i>    
+            </p>
+                    
+
+        <h2>Acknowledgments</h2>
+
+        <p>The quotes that make up the bulk of this database are in the public domain.  The <a href="https://www.kaggle.com/cerolacia/final-quotes-scraped">source of the data</a> for this database is at the preceding link.</p>
+
+        <p>The author details were sourced from various author pages via <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia</a>.</p>

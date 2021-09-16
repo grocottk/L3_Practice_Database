@@ -3,7 +3,6 @@
 
 // Checks that the user is logged in...
 if (isset($_SESSION['admin'])) {
-    echo "you are logged in";
 
     // Quote deleting (inspired by "[...]deletequote_confirm.php")
     $deletequote_sql = "DELETE FROM `quotes` WHERE `quotes`.`ID` =".$_REQUEST['ID'];
