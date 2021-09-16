@@ -6,42 +6,25 @@
 $subject_to_find = $_REQUEST['subjectID'];
 
 // Subject ID finding
-$subject_sql = "SELECT * FROM `subject` WHERE `Subject` LIKE '%$quick_find%'";
+$subject_sql = "SELECT * FROM `subject` WHERE `Subject_ID` = $subject_to_find";
 $subject_query = mysqli_query($dbconnect, $subject_sql);
 $subject_rs = mysqli_fetch_assoc($subject_query);
 
-$subject_count = mysqli_num_rows($subject_query);
+?>
 
-if ($subject_count > 0) {
-    $subject_ID = $subject_rs['Subject_ID'];
-}
+<h2>Subject Results (<?php echo $subject_rs['Subject']?>)</h2>
 
-else
-{
-    // If this query is not entered, the below code breaks...
-    // ... Also, if the query is set to zero (0), any quote... 
-    // ... which has less than three subjects will be displayed.
-    $subject_ID = "-1";
-}
+<?php
 
+// Get quotes (Partially from "[...]quick_search.php")
 $find_sql = "SELECT * FROM `quotes`
 JOIN author ON (`author`.`Author_ID` = `quotes`.`Author_ID`)
-WHERE `Last_Name` LIKE '%$quick_find%'
-OR `First_Name` LIKE '%$quick_find%'
-OR `Quote` LIKE '%$quick_find%'
-OR `Subject_1_ID` = $subject_ID
-OR `Subject_2_ID` = $subject_ID
-OR `Subject_3_ID` = $subject_ID
+WHERE `Subject_1_ID` = $subject_to_find
+OR `Subject_2_ID` = $subject_to_find
+OR `Subject_3_ID` = $subject_to_find
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
-$count = mysqli_num_rows($find_query);
-
-?>
-
-<h2>Quick Search Results for the search term <?php echo $quick_find ?></h2>
-
-<?php
 
 if($count > 0) {
 
