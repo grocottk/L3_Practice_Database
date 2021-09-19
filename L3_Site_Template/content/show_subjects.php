@@ -22,7 +22,7 @@
         <span class="tag">
             <a href="index.php?page=subject&Subject_ID=<?php echo $sub_rs['Subject_ID']; ?>">
             <?php echo $sub_rs['Subject']; ?>
-            <!-- </a> -->
+            </a>
         </span> &nbsp;
         <?php
             } // End if subject exists statement

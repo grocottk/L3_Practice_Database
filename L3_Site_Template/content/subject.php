@@ -3,7 +3,12 @@
 
 <?php
 
-$subject_to_find = $_REQUEST['subjectID'];
+if(!isset($_REQUEST['Subject_ID']))
+{
+    header('Location: index.php');
+}
+
+$subject_to_find = $_REQUEST['Subject_ID'];
 
 // Subject ID finding
 $subject_sql = "SELECT * FROM `subject` WHERE `Subject_ID` = $subject_to_find";
@@ -25,6 +30,8 @@ OR `Subject_3_ID` = $subject_to_find
 ";
 $find_query = mysqli_query($dbconnect, $find_sql);
 $find_rs = mysqli_fetch_assoc($find_query);
+
+$count = mysqli_num_rows($find_query); // From "[...]quick_search.php"
 
 if($count > 0) {
 
