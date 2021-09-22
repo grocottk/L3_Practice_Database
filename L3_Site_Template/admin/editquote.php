@@ -35,13 +35,26 @@ if (isset($_SESSION['admin'])) {
     $subjectID_2 = $find_rs['Subject_2_ID'];
     $subjectID_3 = $find_rs['Subject_3_ID'];
 
+    // Set subject tags to blank at the start...
+    $tag_1 = $tag_2 = $tag_3 = "";
+
     // Find subject names from subject table...
     $tag_1_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_1");
     $tag_1 = $tag_1_rs['Subject'];
+
+    // Reccomended addition from GC, which checks for subject tags, helping to avoid errors...
+
+    if ($subjectID_2 > 0)
+    {
     $tag_2_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_2");
     $tag_2 = $tag_2_rs['Subject'];
+    };
+
+    if ($subjectID_3 > 0)
+    {
     $tag_3_rs = get_rs($dbconnect, "SELECT * FROM `subject` WHERE Subject_ID = $subjectID_3");
     $tag_3 = $tag_3_rs['Subject'];
+    };
 
 // Initialise tag IDs
 $tag_1_ID = $tag_2_ID = $tag_3_ID = 0;
